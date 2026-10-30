@@ -1,0 +1,299 @@
+<!-- HERO BANNER -->
+
+<section class="hero-banner">
+
+  <div class="hero-overlay"></div>
+
+  <div class="hero-banner-container">
+
+    <div class="hero-banner-content">
+
+      <span class="hero-eyebrow">
+        CREATE MEMORABLE MOMENTS
+      </span>
+
+      <h1>
+        Events That<br>
+        Bring People Together
+      </h1>
+
+      <p>
+        Discover amazing events, talented vendors and
+        create unforgettable experiences with A1 Events.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================
+     UPCOMING EVENTS
+===================================== -->
+
+<section class="upcoming-events" id="upcoming-events">
+
+  <div class="events-container">
+
+    <!-- Section Heading -->
+
+    <div class="events-heading">
+
+      <div class="events-heading-content">
+
+        <span class="section-badge">
+          DON'T MISS OUT
+        </span>
+
+        <h2>
+          Upcoming <span>Events</span>
+        </h2>
+
+        <p>
+          Discover exciting events happening around you.
+          Find your next experience with A1 Events.
+        </p>
+
+      </div>
+
+      <a routerLink="/events" class="view-all-btn">
+        View All Events <span>→</span>
+      </a>
+
+    </div>
+
+
+    <!-- Loading State -->
+
+    @if (isLoading()) {
+
+      <div class="events-message">
+        <span class="loading-spinner"></span>
+        Loading upcoming events...
+      </div>
+
+    }
+
+    <!-- Error State -->
+
+    @else if (errorMessage()) {
+
+      <div class="events-message error">
+        {{ errorMessage() }}
+      </div>
+
+    }
+
+    <!-- Events Available -->
+
+    @else if (events().length > 0) {
+
+      <div class="events-grid">
+
+        @for (event of events(); track event.id) {
+
+          <article class="event-card">
+
+            <!-- Event Image -->
+
+            <div class="event-image">
+
+              @if (event.imageUrl) {
+
+                <img
+                  [src]="event.imageUrl"
+                  [alt]="event.name"
+                  loading="lazy">
+
+              } @else {
+
+                <div class="event-image-placeholder">
+                  <div class="placeholder-decoration"></div>
+                  <span class="placeholder-icon">🎉</span>
+                  <span class="placeholder-text">A1 EVENTS</span>
+                </div>
+
+              }
+
+              <!-- Date Badge -->
+
+              <div class="event-date">
+
+                <strong>
+                  {{ event.eventDate | date:'dd' }}
+                </strong>
+
+                <span>
+                  {{ event.eventDate | date:'MMM' }}
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <!-- Event Details -->
+
+            <div class="event-content">
+
+              <div class="event-location">
+                <span>📍</span>
+                <span>{{ event.location }}</span>
+              </div>
+
+              <h3>
+                {{ event.name }}
+              </h3>
+
+              <p>
+                {{ event.description }}
+              </p>
+
+
+              <!-- Event Footer -->
+
+              <div class="event-footer">
+
+                <div class="event-time">
+                  <span>◷</span>
+
+                  <span>
+                    {{ event.startTime }} - {{ event.endTime }}
+                  </span>
+                </div>
+
+                <a routerLink="/events" class="event-details-link">
+                  View Details <span>→</span>
+                </a>
+
+              </div>
+
+            </div>
+
+          </article>
+
+        }
+
+      </div>
+
+    }
+
+    <!-- No Events -->
+
+    @else {
+
+      <div class="events-message">
+        <span class="empty-event-icon">🎉</span>
+
+        <h3>No Upcoming Events</h3>
+
+        <p>
+          There are no upcoming events at the moment.
+          Please check back soon!
+        </p>
+
+      </div>
+
+    }
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     BECOME A VENDOR SECTION
+========================= -->
+
+<section class="vendor-cta">
+
+  <div class="vendor-cta-container">
+
+    <div class="vendor-cta-content">
+      <span class="vendor-cta-label">GROW YOUR BUSINESS</span>
+
+      <h2>Are You a Vendor?</h2>
+
+      <p>
+        Join A1 Events and get featured in our upcoming events.
+        Reach more customers and grow your business.
+      </p>
+    </div>
+
+    <div class="vendor-cta-action">
+      <a routerLink="/vendor-register" class="vendor-apply-btn">
+        Apply Now <span>→</span>
+      </a>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     WEBSITE FOOTER
+========================= -->
+
+<footer class="site-footer">
+
+  <div class="footer-container">
+
+    <!-- Brand -->
+    <div class="footer-brand">
+
+      <a routerLink="/" class="footer-logo">
+        <span class="footer-logo-icon">A</span>
+        <span>A1 Events</span>
+      </a>
+
+      <p>
+        Connecting People Through Amazing Events
+      </p>
+
+    </div>
+
+
+    <!-- Quick Links -->
+    <div class="footer-column">
+
+      <h3>Quick Links</h3>
+
+      <a routerLink="/">Home</a>
+      <a routerLink="/events">Events</a>
+      <a routerLink="/vendors">Vendors</a>
+      <a routerLink="/vendor-register">Apply as Vendor</a>
+      <a routerLink="/about">Contact</a>
+
+    </div>
+
+
+    <!-- Support -->
+    <div class="footer-column">
+
+      <h3>Support</h3>
+
+      <a routerLink="/faq">FAQ</a>
+      <a routerLink="/terms">Terms & Conditions</a>
+      <a routerLink="/privacy">Privacy Policy</a>
+
+    </div>
+
+  </div>
+
+
+  <!-- Copyright -->
+  <div class="footer-bottom">
+
+    <p>
+      © {{ currentYear }} A1 Events. All rights reserved.
+    </p>
+
+  </div>
+
+</footer>
+
+

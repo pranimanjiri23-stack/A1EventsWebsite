@@ -1,0 +1,42 @@
+<header class="site-header">
+  <div class="header-container">
+
+    <!-- Logo -->
+    <a class="brand" routerLink="/">
+      <span class="brand-icon">A</span>
+      <span class="brand-text">A1 Events</span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav">
+      <a routerLink="/" routerLinkActive="active"
+         [routerLinkActiveOptions]="{ exact: true }">
+        Home
+      </a>
+
+      <a routerLink="/events" routerLinkActive="active">
+        Events
+      </a>
+
+      <a routerLink="/vendors" routerLinkActive="active">
+        Vendors
+      </a>
+
+      <a routerLink="/about" routerLinkActive="active">
+        About
+      </a>
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="header-actions">
+      <a class="sign-in" routerLink="/login">
+        Sign In
+      </a>
+
+      <a class="vendor-button" routerLink="/vendor-application">
+        Apply as Vendor
+      </a>
+    </div>
+
+  </div>
+</header>
